@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# Upstream also ships a plain Makefile; CMake is the build that installs.
+%:
+	dh $@ --buildsystem=cmake
+
+# Every dependency from the system (the deps/ submodules are not in the
+# source). Upstream's tests reach public STUN and TURN servers, which a
+# package build cannot.
+override_dh_auto_configure:
+	dh_auto_configure -- -DPREFER_SYSTEM_LIB=ON -DUSE_NICE=OFF \
+		-DNO_EXAMPLES=ON -DNO_TESTS=ON
+
+# The SONAME follows upstream's minor version (0.24): whatever builds
+# against this version needs at least it.
+override_dh_makeshlibs:
+	dh_makeshlibs -V

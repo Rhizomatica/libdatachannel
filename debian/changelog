@@ -1,0 +1,6 @@
+libdatachannel (0.24.6-1) unstable; urgency=medium
+
+  * Initial release, from upstream v0.24.6 (6b1e2e6), built against the
+    system libjuice, libsrtp2, usrsctp, plog and nlohmann-json.
+
+ -- Rafael Diniz <rafael@riseup.net>  Mon, 02 Nov 2026 12:00:00 +0000

@@ -1,0 +1,45 @@
+Source: libdatachannel
+Section: libs
+Priority: optional
+Maintainer: Rafael Diniz <rafael@riseup.net>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake (>= 3.13),
+ pkg-config,
+ libssl-dev,
+ libsrtp2-dev,
+ libusrsctp-dev,
+ libjuice-dev (>= 1.7.4),
+ libplog-dev,
+ nlohmann-json3-dev,
+Standards-Version: 4.7.2
+Homepage: https://libdatachannel.org
+Vcs-Browser: https://github.com/Rhizomatica/libdatachannel
+Vcs-Git: https://github.com/Rhizomatica/libdatachannel.git -b hermes
+
+Package: libdatachannel-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ libdatachannel0.24 (= ${binary:Version}),
+ ${misc:Depends},
+Description: WebRTC data channels, media transport and WebSockets (development files)
+ libdatachannel is a C/C++ implementation of WebRTC: data channels, media
+ transport over DTLS-SRTP with RTP and RTCP handling, and WebSockets. It
+ interoperates with browsers, with ICE through libjuice.
+ .
+ This package contains the C and C++ headers and the CMake package
+ configuration.
+
+Package: libdatachannel0.24
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: WebRTC data channels, media transport and WebSockets
+ libdatachannel is a C/C++ implementation of WebRTC: data channels, media
+ transport over DTLS-SRTP with RTP and RTCP handling, and WebSockets. It
+ interoperates with browsers, with ICE through libjuice.
